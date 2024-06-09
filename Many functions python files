@@ -1,0 +1,47 @@
+from os.path import exists
+import shutil
+
+print('-=-' * 10)
+print('Sistema de Edição de Arquivos')
+print('-=-' * 10)
+
+while True:
+    x = int(input('Escolha os seguintes itens:\n1:Criar arquivo\n2:Editar arquivo\n3:Ler arquivo\n4:Limpar arquivo\n5:Criar cópia do arquivo\n6:Sair\n: '))
+    if x == 1:
+       nome_do_arquivo = input('Digite o nome do arquivo(extensão .txt): ')
+       if exists(nome_do_arquivo):
+        print('Nome desse arquivo ja existe, coloque outro.')
+       else: 
+        with open(nome_do_arquivo+'.txt', 'w') as file:
+            print('Arquivo txt criado com sucesso.')
+    
+    elif x == 2:
+       escolha_arquivo = input('Qual arquivo será escolhido? ')
+       texto = input('Qual mensagem você quer colocar no arquivo? ')
+       with open(escolha_arquivo+'.txt', 'w') as file:
+        file.write(texto)
+        
+    elif x == 3:
+       escolha_arquivo5 = input('Digite qual arquivo deve ser lido: ')
+       with open(escolha_arquivo5+'.txt') as file:
+        print(file.read())
+
+    elif x == 4:
+       escolha_arquivo4 = input('Digite o nome do arquivo a ser limpo: ')
+       with open(escolha_arquivo4+'.txt', 'w') as file:
+        pass
+       print('Arquivo limpo com sucesso!')
+
+    elif x == 5:
+       escolha_arquivo2 = input('Digite qual arquivo deve ser copiado: ')
+       escolha_arquivo3 = input('Digite o nome do novo arquivo: ')
+       with open(escolha_arquivo3+'.txt', 'w') as file:
+          print('Novo arquivo criado com sucesso!')
+       shutil.copyfile(escolha_arquivo2+'.txt', escolha_arquivo3+'.txt')
+       
+    elif x == 6:
+       
+       print('Saindo...')
+       break
+    else:
+       print('Só é permitido números entre 1 e 6!')
